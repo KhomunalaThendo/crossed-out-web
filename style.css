@@ -1,22 +1,61 @@
+@font-face{
+    font-family: 'outfit';
+    src: url('assets/fonts/Outfit.ttf') format('truetype'); 
+    font-weight: normal;  
+}
+@font-face{
+    font-family: 'sarina';
+    src: url('assets/fonts/Sarina-Regular.ttf') format('truetype'); 
+    font-weight: bold;  
+}
+@font-face{
+    font-family: 'vietnam';
+    src: url('assets/fonts/BeVietnamPro.ttf') format('truetype'); 
+    font-weight: normal;  
+}
+@font-face{
+    font-family: 'caprasimo';
+    src: url('assets/fonts/Caprasimo.ttf') format('truetype'); 
+    font-weight: normal;  
+}
+
 *{
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 :root{
-    --bg-color-dark: #;
+    --bg-color-dark: #1e1e1e;
     --bg-color-light: #ffffff;
+    --primary-color: #0a0a0a;
+    --secondary-color: #00f5ff;
+    --accent1: #00ff00;
 
 }
-
+.navigate{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    background-color: #1111118e;
+}
 .navigation{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px 10px;
+    width: 100%;
+    filter: blur();
 }
 .logo{
     width: 10vw;
+    animation: 3s linear 0s infinite running myRotation;
+}
+@keyframes myRotation{
+    100%{transform: rotateY(360deg)};
 }
 .search-box{
     display: flex;
@@ -31,10 +70,22 @@
     outline: none;
     background-color: transparent;
     padding: 15px 10px;
+    font-family: 'outfit', serif;
 }
 nav{
     display: flex;
     gap: 10px;
+    padding-right: 5vw;
+    font-family: 'outfit', serif;
+}
+nav a{
+    text-decoration: none;
+    color: #ffffff;
+}
+nav a:hover{
+    transform: translateY(-3px);
+    border-bottom: solid 1px gold;
+    color: gold;
 }
 .drawer{
     display: none;
@@ -44,11 +95,75 @@ nav{
     background-size: cover;
     background-position: center;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    
+}
+#banner-container{
+    text-align: left;
+    width: 40vw;
+    padding: 10px 50px;
+}
+.banner-text{
+    font-size: 20px;
+    text-align: end;
+    font-family: 'caprasimo', serif;
 }
 #product-section{
     height: 100vh;
 }
-@media screen and (max-width: 420px) {
+.prodSecTitle{
+    text-align: center;
+    margin-top: 20vh;
+}
+.products{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 10px;
+    margin-top: 5vh;
+    scrollbar-width:thin;
+}
+.product{
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f1f5;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+
+}
+#productPic{
+    width: 300px;
+}
+#prodName{
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 10px 5px;
+}
+#price{
+    font-size: 1em;
+    font-weight: bolder;
+    padding: 10px 5px;
+}
+.ratingCart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+.rating img{
+    filter: drop-shadow(1px 1px 1px black);
+}
+.addCart{
+    background-color: black;
+    border-radius: 5px;
+}
+.cartBtn{
+    padding: 5px;
+}
+@media (max-width: 420px) {
     .logo{
         width: 20vw;
     }
@@ -67,14 +182,74 @@ nav{
     .drawer{
         display: flex;
         color: black;
+        padding-right: 10vw;
     }
     nav{
         display: none;
     }
     .banner-section{
-        background-image: url(assets/images/banner.jpg);
+        background-image: url(assets/images/crossedblk.jpg);
         background-size: cover;
         background-position: center;
         height: 100vh;
+        display: flex;
+        justify-content: end;
     }
+    #banner-container{
+        width: 60vw;
+        padding: 10px 50px;
+        text-align: right;
+    }
+    .banner-text{
+        font-size: 20px;
+        text-align: end;
+        font-family: 'caprasimo', serif;
+    }
+    
+#product-section{
+    height: 100vh;
+}
+.products{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 10px;
+}
+.product{
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f1f5;
+
+}
+#productPic{
+    width: 275px;
+}
+#prodName{
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 10px 5px;
+}
+#price{
+    font-size: 1em;
+    font-weight: bolder;
+    padding: 10px 5px;
+}
+.ratingCart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+.rating img{
+    filter: drop-shadow(1px 1px 1px black);
+}
+.addCart{
+    background-color: black;
+    border-radius: 5px;
+}
+.cartBtn{
+    padding: 5px;
+}
 }
