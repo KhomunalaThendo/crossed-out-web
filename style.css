@@ -108,6 +108,7 @@ nav a:hover{
     font-size: 20px;
     text-align: end;
     font-family: 'caprasimo', serif;
+    color: var(--bg-color-light);
 }
 #product-section{
     height: 100vh;
@@ -115,6 +116,7 @@ nav a:hover{
 .prodSecTitle{
     text-align: center;
     margin-top: 20vh;
+    font-family: 'Vietnam', sans-serif;
 }
 .products{
     display: flex;
@@ -132,6 +134,7 @@ nav a:hover{
     background-color: #f0f1f5;
     border: 1px solid lightgray;
     border-radius: 5px;
+    font-family: 'outfit', serif;
 
 }
 #productPic{
@@ -153,6 +156,10 @@ nav a:hover{
     justify-content: space-between;
     padding: 10px 5px;
 }
+.rating{
+    display: flex;
+    align-items: center;
+}
 .rating img{
     filter: drop-shadow(1px 1px 1px black);
 }
@@ -163,7 +170,7 @@ nav a:hover{
 .cartBtn{
     padding: 5px;
 }
-@media (max-width: 420px) {
+@media (max-width: 450px) {
     .logo{
         width: 20vw;
     }

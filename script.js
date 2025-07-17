@@ -2,49 +2,49 @@ const products = [
     
     {
     id: 1,
-    name: 'Crossed Hoodie',
+    name: 'Crossed Hoodie Black',
     price: 350,
     image: 'assets/images/hood-blk.jpg',
     rating: 5
     },
     {
     id: 2,
-    name: 'Crossed Hoodie',
+    name: 'Crossed Hoodie Gold',
     price: 350,
-    image: 'assets/images/hood-blk.jpg',
+    image: 'assets/images/hoodie-gld.jpg',
     rating: 5
     },
     {
     id: 3,
-    name: 'Crossed Hoodie',
-    price: 350,
-    image: 'assets/images/hood-blk.jpg',
+    name: '2025 For Play Tee',
+    price: 250,
+    image: 'assets/images/cool-tee.jpg',
     rating: 5
     },
     {
     id: 4,
-    name: 'Crossed Hoodie',
-    price: 350,
-    image: 'assets/images/hood-blk.jpg',
+    name: 'For Play Tee',
+    price: 250,
+    image: 'assets/images/for-ply.jpg',
     rating: 5
     },
     {
     id: 5,
-    name: 'Crossed Hoodie',
-    price: 350,
-    image: 'assets/images/hood-blk.jpg',
+    name: 'For Play Tote Bag',
+    price: 200,
+    image: 'assets/images/cool-bag.jpg',
     rating: 5
     },
     {
     id: 6,
-    name: 'Crossed Hoodie',
-    price: 350,
-    image: 'assets/images/hood-blk.jpg',
+    name: 'Crossed Tee Black',
+    price: 200,
+    image: 'assets/images/tee-blk.jpg',
     rating: 5
     },
     {
     id: 7,
-    name: 'Crossed Hoodie',
+    name: 'Crossed Tee Gold',
     price: 350,
     image: 'assets/images/hood-blk.jpg',
     rating: 5
@@ -70,7 +70,7 @@ const products = [
 //display products
 const renderProducts = () => {
     const productSection = document.querySelector('.products');
-    //productSection.innerHTML = '';
+    productSection.innerHTML = '';
 
     products.forEach(product => {
         const productDiv = document.createElement('div');
@@ -92,6 +92,8 @@ const renderProducts = () => {
                     </div>
                 </div>
         `;
-        productSection.appendChild(productDIV);
+        productSection.appendChild(productDiv);
     });
 }
+
+renderProducts(); 
