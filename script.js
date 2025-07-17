@@ -88,12 +88,16 @@ const renderProducts = () => {
                         <p id="rating">${product.rating}</p>
                     </div>
                     <div class="addCart">
-                        <img class="cartBtn" src="assets/icons/add-cart.png" alt="">
+                        <img class="cartBtn" data-id = "${product.id}" src="assets/icons/add-cart.png" alt="">
                     </div>
                 </div>
         `;
         productSection.appendChild(productDiv);
     });
 }
-
+//product page function/ display product details
+const renderProductPage = () => {
+    
+}
 renderProducts(); 
+renderProductPage();

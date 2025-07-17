@@ -84,7 +84,6 @@
 nav{
     display: flex;
     gap: 10px;
-    padding-right: 5vw;
     font-family: 'outfit', serif;
 }
 nav a{
@@ -106,12 +105,18 @@ nav a:hover{
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     
 }
 #banner-container{
     text-align: left;
     width: 40vw;
     padding: 10px 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+    gap: 2vw;
 }
 .banner-text{
     font-size: 20px;
@@ -119,9 +124,13 @@ nav a:hover{
     font-family: 'caprasimo', serif;
     color: var(--bg-color-light);
 }
-#product-section{
-    height: 100vh;
-    scrollbar-color: var(--bg-color-light);
+#bannerBtn{
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: none;
+    width: 10vw;
+    background-color: var(--secondary-color);
+    cursor: pointer;
 }
 .prodSecTitle{
     text-align: center;
@@ -224,14 +233,24 @@ nav a:hover{
         text-align: right;
     }
     .banner-text{
-        font-size: 20px;
+        font-size: 16px;
         text-align: end;
         font-family: 'caprasimo', serif;
+        color: #ffffff;
+    }
+    #bannerBtn{
+        padding: 10px 5px;
+        border-radius: 10px;
+        border: none;
+        width: 40vw;
+    }
+    .prodSecTitle{
+        text-align: center;
+        margin-top: 10vh;
+        font-family: 'Vietnam', sans-serif;
     }
     
-#product-section{
-    height: 100vh;
-}
+
 .products{
     display: flex;
     align-items: center;
@@ -247,15 +266,18 @@ nav a:hover{
 
 }
 #productPic{
-    width: 275px;
+    width: 150px;
+}
+.productInfo{
+    width: 100px;
 }
 #prodName{
-    font-size: 1.2em;
+    font-size: 12px;
     font-weight: bolder;
     padding: 10px 5px;
 }
 #price{
-    font-size: 1em;
+    font-size: 10px;
     font-weight: bolder;
     padding: 10px 5px;
 }
