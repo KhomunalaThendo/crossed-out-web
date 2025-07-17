@@ -51,16 +51,16 @@ const products = [
     },
     {
     id: 8,
-    name: 'Crossed Hoodie',
-    price: 350,
-    image: 'assets/images/hood-blk.jpg',
+    name: 'Crossed Out Crop Top',
+    price: 150,
+    image: 'assets/images/crop-top.jpg',
     rating: 5
     },
     {
     id: 9,
-    name: 'Crossed Hoodie',
+    name: 'Crossed Out Mini Skirt',
     price: 350,
-    image: 'assets/images/hood-blk.jpg',
+    image: 'assets/images/skirt.jpg',
     rating: 5
     },
 
