@@ -3,59 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Product</title>
+    <title>Product Page</title>
 </head>
 <body>
-    <header>
-        <div class="nav-bar">
-            <div class="back-icon">
-                <a href="index.html" id="back"><img src="assets/back.svg" alt=""></a>
+    <header class="productPageSec">
+        <div class="navbar">
+            <div class="back">
+                <img src="assets/icons/back.svg" alt="">
             </div>
-            <div class="search-profile-cart">
-                <a href="#"><img src="assets/search.svg" width="20" height="20" id="search-icon" alt=""></span></a>
-                <a href="cart.html" class="cart-container"><img src="assets/cart.svg" width="20" height="20" id="cart-icon" alt=""><span id="cart-count" class="cart-count"></span></a>
-                <a href="#"><img src="assets/profile.svg" width="20" height="20" id="profile-icon" alt=""></a>
+
+            <div class="profileCart">
+                <div class="cart">
+                    <img id="cart" src="assets/icons/cart-blk.png" alt="">
+                </div>
+
+                <img src="assets/icons/profile.png" alt="">
+                
             </div>
         </div>
     </header>
-
-    <section class="product-section">
-        <div class="product-img">
-            <img id="product-img" src="" alt="">
-        </div>
-        <div class="product-details">
-            <div class="prod-name"><h4 id="product-name"></h4></div>
-            <div class="prod-price"><p id="prod-price"></p></div>
-            <hr>
-            <div class="descriptions">
-                <p class="description"></p>
-                <p class="details"></p>
-            </div>
-            <hr>
-            <div class="colors">
-                <p>Colour</p>
-                <div class="color-btns"></div>
-            </div>
-            <div class="size">
-                <p>Size</p>
-                <div class="sizes"></div>
-            </div>
-            <div class="quantity">
-                <p>Quantity</p>
-                <div class="qty-select">
-                    <button class="reduce-qty">-</button>
-                    <p id="qty">1</p>
-                    <button class="increase-qty">+</button>
-                </div>
-            </div>
-            <div class="add2cart-wishlist">
-                <button onclick="addToCart()" class="add2cart">ADD TO CART</button>
-                <button class="add2wish">ADD TO WISHLIST</button>
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
 </body>
 </html>

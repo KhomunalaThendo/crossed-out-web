@@ -95,9 +95,18 @@ nav a:hover{
     border-bottom: solid 1px gold;
     color: gold;
 }
-.drawer{
+.cart-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-right: 5vw;
+
+}
+.nav-mobile{
     display: none;
 }
+
 #banner-section{
     background-image: url(assets/images/banner.jpg);
     background-size: cover;
@@ -195,6 +204,7 @@ nav a:hover{
 #about-section{
     height: 60vh;
 }
+/*Product page styling*/
 @media (max-width: 450px) {
     .logo{
         width: 20vw;
@@ -205,18 +215,34 @@ nav a:hover{
         justify-content: center;
     }
     #search-input{
-        width: 40vw;
+        width: 20vw;
         border: none;
         outline: none;
         background-color: transparent;
         padding: 15px 10px;
     }
+    #search-input:hover{
+        width: 30vw;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        padding: 15px 10px;
+    }
+    /*
     .drawer{
         display: flex;
         color: black;
         padding-right: 10vw;
-    }
+    }*/
     nav{
+        display: none;
+    }
+    .nav-mobile{
+        display: flex;
+        padding-right: 5vw;
+        gap: 10px;
+    }
+    .cart-profile{
         display: none;
     }
     .banner-section{
@@ -233,16 +259,21 @@ nav a:hover{
         text-align: right;
     }
     .banner-text{
-        font-size: 16px;
+        font-size: 17px;
         text-align: end;
         font-family: 'caprasimo', serif;
-        color: #ffffff;
+        color: black;
+        text-wrap:var(--bg-color-light) ;
+
     }
     #bannerBtn{
         padding: 10px 5px;
         border-radius: 10px;
         border: none;
         width: 40vw;
+        color: #ffffff;
+        font-family: 'caprasimo', serif;
+
     }
     .prodSecTitle{
         text-align: center;
