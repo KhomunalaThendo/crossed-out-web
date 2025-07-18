@@ -1,0 +1,27 @@
+@font-face{
+    font-family: 'outfit';
+    src: url('assets/fonts/Outfit.ttf') format('truetype'); 
+    font-weight: normal;  
+}
+@font-face{
+    font-family: 'sarina';
+    src: url('assets/fonts/Sarina-Regular.ttf') format('truetype'); 
+    font-weight: bold;  
+}
+@font-face{
+    font-family: 'vietnam';
+    src: url('assets/fonts/BeVietnamPro.ttf') format('truetype'); 
+    font-weight: normal;  
+}
+@font-face{
+    font-family: 'caprasimo';
+    src: url('assets/fonts/Caprasimo.ttf') format('truetype'); 
+    font-weight: normal;  
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
