@@ -25,3 +25,11 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
+:root{
+    --bg-color-dark: #1e1e1e;
+    --bg-color-light: #ffffff;
+    --primary-color: #0a0a0a;
+    --secondary-color: #00f5ff;
+    --accent1: #00ff00;
+
+}
