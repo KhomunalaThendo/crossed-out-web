@@ -205,6 +205,49 @@ nav a:hover{
     height: 60vh;
 }
 /*Product page styling*/
+.profileCart{
+    display: flex;
+}
+.productPagenav{
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 1vw;
+}
+.prodPageSec{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.prodImg{
+    width: 35vw;
+}
+.largeDisplay{
+    width: 35vw;
+}
+.largeDisplay img{
+    width: 35vw;
+}
+.smallImgs{
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.smallImgs img{
+    width: 5vw;
+}
+.prodDetails{
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width: 450px) {
     .logo{
         width: 20vw;
@@ -327,5 +370,32 @@ nav a:hover{
 }
 .cartBtn{
     padding: 5px;
+}
+/*Product for mobile*/
+
+
+.prodPageSec{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.prodImg{
+    width: 100vw;
+}
+.largeDisplay{
+    width: 100vw;
+}
+.largeDisplay img{
+    width: 100vw;
+}
+.smallImgs{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.smallImgs img{
+    width: 15vw;
 }
 }
