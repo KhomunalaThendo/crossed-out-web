@@ -129,7 +129,7 @@ nav a:hover{
 }
 .banner-text{
     text-stroke: 2px black;
-    font-size: 20px;
+    font-size: 23px;
     text-align: end;
     font-family: 'caprasimo', serif;
     color: var(--bg-color-light);
@@ -419,8 +419,8 @@ nav a:hover{
         font-size: 17px;
         text-align: end;
         font-family: 'caprasimo', serif;
-        color: black;
-        text-wrap:var(--bg-color-light) ;
+        color: gold;
+        
 
     }
     #bannerBtn{
