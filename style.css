@@ -421,10 +421,10 @@ nav a:hover{
     }
     .banner-text{
       
-        font-size: 17px;
+        font-size: 20px;
         text-align: end;
         font-family: 'caprasimo', serif;
-        color: gold;
+        color: red;
         text-shadow: 
             -2px -2px 0 black,
              2px -2px 0 black,
