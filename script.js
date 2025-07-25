@@ -88,11 +88,23 @@ const renderProducts = () => {
                         <p id="rating">${product.rating}</p>
                     </div>
                     <div class="addCart">
-                        <img class="cartBtn" data-id = "${product.id}" src="assets/icons/add-cart.png" alt="">
-                    </div>
+                    <button class= "cartBtn"  class="cartBtn" data-id = "${product.id}" >
+                    <img src="assets/icons/add-cart.png" alt="">
+                    
+                    </button>
+                        </div>
                 </div>
         `;
         productSection.appendChild(productDiv);
+    });
+
+    const cartBtns = document.querySelectorAll('.add-to-cart');
+    cartBtns.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const productId = e.currentTarget.getAttribute('data-id');
+            localStorage.setItem('selectedProductId', productId);
+            window.location.href = 'productpage.html'; 
+        });
     });
 }
 //product page function/ display product details
