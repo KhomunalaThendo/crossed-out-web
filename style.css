@@ -408,6 +408,7 @@ nav a:hover{
         justify-content: end;
     }
     #banner-container{
+        margin-top:20px;
         width: 60vw;
         padding: 10px 50px;
         text-align: right;
