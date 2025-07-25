@@ -128,6 +128,7 @@ nav a:hover{
     gap: 2vw;
 }
 .banner-text{
+    text-stroke: 2px black;
     font-size: 20px;
     text-align: end;
     font-family: 'caprasimo', serif;
@@ -414,6 +415,7 @@ nav a:hover{
         text-align: right;
     }
     .banner-text{
+        text-stroke: 2px white;
         font-size: 17px;
         text-align: end;
         font-family: 'caprasimo', serif;
