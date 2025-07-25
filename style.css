@@ -308,14 +308,13 @@ nav a:hover{
     border: solid 1px black;
 }
 .colors{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding-top: 0.5rem;
 }
-.colorBtns{
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.color-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: solid 0.5px black;
 }
 
 .size{

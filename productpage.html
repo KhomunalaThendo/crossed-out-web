@@ -10,7 +10,7 @@
     <header class="productPagenav">
         <div class="navbar">
             <div class="back">
-                <img src="assets/icons/back.svg" alt="">
+                <img onclick="window.location.href='index.html'" src="assets/icons/back.svg" alt="">
             </div>
 
             <div class="profileCart">
@@ -27,19 +27,19 @@
         <div class="prodPageSec">
             <div class="prodImg">
                 <div class="largeDisplay">
-                    <img src="assets/images/6-tee.jpg" alt="">
+                    <img id="largeDisplay" src="" alt="">
                 </div>
                 <div class="smallImgs">
-                    <img  src="assets/images/6-tee.jpg" alt="">
+                    <img id="smallDisplay"  src="assets/images/6-tee.jpg" alt="">
                 </div>
                
             </div>
             <div class="prodDetails">
                 <div class="title">
-                    <h2 class="prodName" id="productName">Tee 6</h2>
+                    <h2 class="prodName" id="productName"></h2>
                 </div>
                 <div class="prodPrice">
-                    <p class="productPrice" id="prodPrice">R 250</p>
+                    <p class="productPrice" id="prodPrice"></p>
                 </div>
                 <div class="discriptions">
                     <div class="buttons">
@@ -48,17 +48,13 @@
                     </div>
                     <hr>
                     <div class="descriptionDetail">
-                        <p id="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. In velit, eius itaque adipisci deserunt magnam at corrupti magni quibusdam molestias accusantium repellendus distinctio libero dolor ut numquam vero ex maiores.</p>
-                        <p id="details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis temporibus nobis, totam eveniet quam atque maxime sit, labore quo minus iure doloribus commodi molestias voluptatum ad ut? Ex, incidunt aliquam!</p>
+                        <p id="description"></p>
+                        <p id="details"></p>
                     </div>
                 </div>
                 <div class="colors">
                     <p>Color</p>
-                    <div class="colorBtns">
-                        <button id="color" value="White"></button>
-                        <button id="color" value="Black"></button>
-                        <button id="color" value="Red"></button>
-                    </div>
+                    <div class="color-btns"></div>
                    
                 </div>
                 <div class="size">
@@ -67,11 +63,16 @@
                 </div>
                 <div class="quantity">
                     <p>Quantity</p>
-                    <div class="qty-select">
+                    <!--<div class="qty-select">
                         <button class="reduce-qty">-</button>
                         <p id="qty">1</p>
                         <button class="increase-qty">+</button>
+                    </div>-->
+
+                    <div class="quantityField">
+                        <input type="number" id="quantity" value="1" min="1">
                     </div>
+
                 </div>
                 <div class="add2cart-wishlist">
                     <button onclick="addToCart()" class="add2cart">ADD TO CART</button>
@@ -82,5 +83,7 @@
             
         </div>
     </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
