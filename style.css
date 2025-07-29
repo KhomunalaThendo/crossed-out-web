@@ -133,11 +133,7 @@ nav a:hover{
     text-align: end;
     font-family: 'caprasimo', serif;
     color: var(--bg-color-light);
-    text-shadow: 
-        -2px -2px 0 white,
-         2px -2px 0 white,
-        -2px  2px 0 white,
-         2px  2px 0 white;
+    
 }
 #bannerBtn{
     padding: 10px 5px;
@@ -425,11 +421,7 @@ nav a:hover{
         text-align: end;
         font-family: 'caprasimo', serif;
         color: red;
-        text-shadow: 
-            -2px -2px 0 black,
-             2px -2px 0 black,
-            -2px  2px 0 black,
-             2px  2px 0 black;
+        
         
 
     }
