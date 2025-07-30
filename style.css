@@ -410,30 +410,9 @@ nav a:hover{
         justify-content: end;
     }
     #banner-container{
-        margin-top:20px;
-        width: 60vw;
-        padding: 10px 50px;
-        text-align: right;
+       display: none;
     }
-    .banner-text{
-      
-        font-size: 20px;
-        text-align: end;
-        font-family: 'caprasimo', serif;
-        color: red;
-        
-        
-
-    }
-    #bannerBtn{
-        padding: 10px 5px;
-        border-radius: 10px;
-        border: none;
-        width: 40vw;
-        color: #ffffff;
-        font-family: 'caprasimo', serif;
-
-    }
+    
     .prodSecTitle{
         text-align: center;
         margin-top: 10vh;
