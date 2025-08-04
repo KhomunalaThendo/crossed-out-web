@@ -154,8 +154,8 @@ const renderProductPage = () => {
         document.getElementById("smallDisplay").src = product.image;
         document.getElementById("productName").textContent = product.name;
         document.getElementById("prodPrice").textContent = `R ${product.price}`;
-        document.getElementById("description").innerHTML = product.description;
-        document.getElementById("details").innerHTML = product.details;
+        document.querySelector(".description").innerHTML = product.description;
+        document.querySelector(".details").innerHTML = product.details;
 
         const colorsContainer = document.querySelector('.color-btns');
         colorsContainer.innerHTML = product.colour.map(c =>
@@ -168,6 +168,24 @@ const renderProductPage = () => {
     } else {
         document.querySelector('.prodPageSec').innerHTML = "<h2>Product not found.</h2>";
     }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        const tabs = document.querySelector('.tab-btn');
+        const contents = document.querySelector('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+
+              /*  tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');*/
+
+                document.getElementById(target).classList.add('active')
+            })
+        })
+    })
 
 }
 

@@ -42,14 +42,20 @@
                     <p class="productPrice" id="prodPrice"></p>
                 </div>
                 <div class="discriptions">
-                    <div class="buttons">
-                        <button class="descriptionbtn">DESCRIPTION</button>
-                        <button class="detailsbtn">DETAILS</button>
+                    <div class="tabs">
+                        <button class="tab-btn" active data-tab="description" >DESCRIPTION</button>
+                        <button class="tab-btn" data-tab="details">DETAILS</button>
                     </div>
                     <hr>
-                    <div class="descriptionDetail">
+                    <!--<div class="descriptionDetail">
                         <p id="description"></p>
                         <p id="details"></p>
+                    </div>-->
+                    <div class="tab-content" active id="description">
+                        <p class="description"></p>
+                    </div>
+                    <div class="tab-content" id="details">
+                        <p class="details"></p>
                     </div>
                 </div>
                 <div class="colors">
