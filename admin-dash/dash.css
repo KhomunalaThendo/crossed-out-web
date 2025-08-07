@@ -1,21 +1,21 @@
 @font-face{
     font-family: 'outfit';
-    src: url('assets/fonts/Outfit.ttf') format('truetype'); 
+    src: url('/assets/fonts/Outfit.ttf') format('truetype'); 
     font-weight: normal;  
 }
 @font-face{
     font-family: 'sarina';
-    src: url('assets/fonts/Sarina-Regular.ttf') format('truetype'); 
+    src: url('/assets/fonts/Sarina-Regular.ttf') format('truetype'); 
     font-weight: bold;  
 }
 @font-face{
     font-family: 'vietnam';
-    src: url('assets/fonts/BeVietnamPro.ttf') format('truetype'); 
+    src: url('/assets/fonts/BeVietnamPro.ttf') format('truetype'); 
     font-weight: normal;  
 }
 @font-face{
     font-family: 'caprasimo';
-    src: url('assets/fonts/Caprasimo.ttf') format('truetype'); 
+    src: url('/assets/fonts/Caprasimo.ttf') format('truetype'); 
     font-weight: normal;  
 }
 
@@ -32,4 +32,214 @@
     --secondary-color: #00f5ff;
     --accent1: #00ff00;
 
+}
+body{
+    background-color: #f0f2f5;
+    font-family: 'Vietnam', sans-serif;
+    overflow: hidden;
+
+}
+
+.dash-header{
+    display: none;
+}
+main{
+    display: flex;
+}
+.drawer-nav{
+    width: 20vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 40px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    margin-right: 10px;
+}
+.drawer-items{
+    display: flex;
+    flex-direction: column;
+}
+.dash{
+    width: 80vw;
+    height: 100vh;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    padding: 10px;
+}
+.overall-stats{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 10px;
+}
+.total-sales{
+    border-radius: 15px;
+    width: 23vw;
+    height: 5vw;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 5px;
+    gap: 10px;
+}
+.total-users{
+    border-radius: 25px;
+    width: 23vw;
+    height: 5vw;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    padding: 5px;
+    gap: 10px;
+}
+.total-orders{
+    border-radius: 25px;
+    width: 23vw;
+    height: 5vw;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 5px;
+    gap: 10px;
+}
+
+.salesPerformance{
+    padding: 10px;
+}
+.sales-performance{
+    padding: 10px;
+}
+.filters{
+    padding: 10px;
+}
+.filters button{
+    width: 60px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+.manage-products{
+    padding: 10px;
+}
+.mng-prod{
+    padding: 10px;
+}
+.productsTable{
+    width: 80vw;
+    padding: 10px;
+}
+th{
+    text-align: start;
+    width: 16vw;
+    height: 4vh;
+    background-color: #a0a0a0;
+    padding: 5px;
+}
+
+/*add product page styling*/
+.addprodheader{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.addProdContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#addProductForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.field-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+}
+.field-group input{
+    width: 40vw;
+    height: 5vh;
+    padding: 5px;
+}
+.field-group textarea{
+    width: 40vw;
+    height: 15vh;
+    padding: 5px;
+}
+
+#addProduct{
+    height: 5vh;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color:#2980b9;
+}
+@media (max-width: 820px) {
+
+    .dash-haeder{
+        position: fixed;
+    }
+    .overall-stats{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    }
+    .total-sales{
+        border-radius: 10px;
+        width: 80vw;
+        height: 25vw;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        padding: 5px;
+        gap: 10px;
+    }
+    .total-users{
+        border-radius: 10px;
+        width: 80vw;
+        height: 25vw;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        padding: 5px;
+        gap: 10px;
+    }
+    .total-orders{
+        border-radius: 10px;
+        width: 80vw;
+        height: 25vw;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        padding: 5px;
+        gap: 10px;
+    }
+    .productsTable{
+        width: 80vw;
+        padding: 10px;
+    }
+    
 }

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossed Out - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --light: #f5f5f5;
+            --dark: #121212;
+            --gray: #e0e0e0;
+            --error: #e74c3c;
+            --success: #2ecc71;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+       
+        body {
+            background-color: #f0f2f5;
+            color: var(--primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+       
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+       
+        .logo-container {
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+       
+        .logo {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary);
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            border-radius: 8px;
+        }
+       
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+       
+        .nav-item {
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+       
+        .nav-item:hover, .nav-item.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: white;
+            border-left: 3px solid var(--secondary);
+        }
+       
+        .nav-item i {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+       
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+        }
+       
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray);
+        }
+       
+        .header-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+       
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+       
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+       
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+       
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+       
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+       
+        .stat-title {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+       
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+       
+        .stat-change {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            color: var(--success);
+            font-size: 0.9rem;
+        }
+       
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+       
+        .sales-icon { background: rgba(46, 204, 113, 0.2); color: var(--success); }
+        .users-icon { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+        .orders-icon { background: rgba(155, 89, 182, 0.2); color: #9b59b6; }
+       
+        /* Sales Graph */
+        .graph-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+       
+        .graph-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+       
+        .filters {
+            display: flex;
+            gap: 0.5rem;
+        }
+       
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: #f0f2f5;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+       
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+       
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+       
+        /* Products Table */
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+       
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+       
+        .search-box {
+            display: flex;
+            background: #f0f2f5;
+            border-radius: 30px;
+            overflow: hidden;
+            width: 300px;
+        }
+       
+        .search-box input {
+            flex: 1;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+        }
+       
+        .search-box button {
+            padding: 0.7rem 1.2rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #777;
+        }
+       
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+       
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray);
+        }
+       
+        th {
+            font-weight: 600;
+            color: #555;
+        }
+       
+        .product-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+       
+        .action-cell {
+            display: flex;
+            gap: 0.5rem;
+        }
+       
+        .btn {
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+       
+        .btn:hover {
+            background: #b8972e;
+        }
+       
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+       
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+       
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+        }
+       
+        .btn-edit {
+            background: #3498db;
+        }
+       
+        .btn-delete {
+            background: var(--error);
+        }
+       
+        .btn-edit:hover {
+            background: #2980b9;
+        }
+       
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+       
+        .status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+       
+        .status-active {
+            background: rgba(46, 204, 113, 0.2);
+            color: var(--success);
+        }
+       
+        .status-inactive {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--error);
+        }
+       
+        /* Add Product Form */
+        .add-prod-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+       
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray);
+        }
+       
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+       
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+       
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+       
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+       
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+       
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+       
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+       
+        .message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+       
+        .success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+       
+        .error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+       
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+            }
+           
+            .brand, .nav-text {
+                display: none;
+            }
+           
+            .nav-item {
+                justify-content: center;
+            }
+           
+            .main-content {
+                margin-left: 70px;
+            }
+        }
+       
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+           
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+           
+            .graph-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+           
+            .filters {
+                width: 100%;
+                justify-content: space-between;
+            }
+           
+            .table-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+           
+            .search-box {
+                width: 100%;
+            }
+           
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <div class="logo">X</div>
+            <div class="brand">CROSSED OUT</div>
+        </div>
+       
+        <a href="#" class="nav-item active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="nav-text">Products</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-list"></i>
+            <span class="nav-text">Orders</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span class="nav-text">Customers</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-chart-line"></i>
+            <span class="nav-text">Analytics</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span class="nav-text">Settings</span>
+        </a>
+    </div>
+   
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <div class="header-title">Admin Dashboard</div>
+            <div class="user-info">
+                <div class="user-avatar">AD</div>
+                <div>Admin User</div>
+            </div>
+        </header>
+       
+        <!-- Stats Section -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon sales-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="stat-title">Total Sales</div>
+                <div class="stat-value" id="totalSales">R 24,580</div>
+                <div class="stat-change">
+                    <i class="fas fa-arrow-up"></i>
+                    12.5% from last month
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon users-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-title">Total Users</div>
+                <div class="stat-value" id="totalUsers">1,862</div>
+                <div class="stat-change">
+                    <i class="fas fa-arrow-up"></i>
+                    8.3% from last month
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orders-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="stat-title">Total Orders</div>
+                <div class="stat-value" id="totalOrders">186</div>
+                <div class="stat-change">
+                    <i class="fas fa-arrow-up"></i>
+                    5 new orders today
+                </div>
+            </div>
+        </div>
+       
+        <!-- Add Product Form -->
+        <div class="add-prod-container">
+            <h2 class="form-title">Add New Product</h2>
+            <div id="message" class="message"></div>
+           
+            <form id="productForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="productName">Product Name</label>
+                        <input type="text" id="productName" required placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Price (R)</label>
+                        <input type="number" id="productPrice" step="0.01" required placeholder="Enter price">
+                    </div>
+                </div>
+               
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="productDescription">Description</label>
+                        <textarea id="productDescription" required placeholder="Enter product description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDetails">Details</label>
+                        <textarea id="productDetails" required placeholder="Enter product details"></textarea>
+                    </div>
+                </div>
+               
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="productCategory">Category</label>
+                        <select id="productCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="t-shirts">T-Shirts</option>
+                            <option value="hoodies">Hoodies</option>
+                            <option value="bottoms">Bottoms</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stockQuantity">Stock Quantity</label>
+                        <input type="number" id="stockQuantity" required placeholder="Enter stock quantity">
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label for="productImage">Image URL</label>
+                    <input type="text" id="productImage" required placeholder="Enter image URL">
+                </div>
+               
+                <div class="actions">
+                    <button type="reset" class="btn btn-outline">Reset</button>
+                    <button type="submit" class="btn">Add Product</button>
+                </div>
+            </form>
+        </div>
+       
+        <!-- Products Table -->
+        <div class="table-container">
+            <div class="table-header">
+                <h2>Manage Products</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+           
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTable">
+                    <!-- Products will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the sales chart
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Sales (R)',
+                    data: [4500, 5200, 4800, 6100, 7300, 8500, 9200],
+                    borderColor: '#d4af37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+       
+        // Filter buttons functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+               
+                // In a real app, this would fetch new data based on the filter
+                // For demo, we'll just update the chart with random data
+                const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                const newData = Array(7).fill().map(() => Math.floor(Math.random() * 10000) + 2000);
+               
+                if(this.textContent === 'Monthly') {
+                    salesChart.data.labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+                    salesChart.data.datasets[0].data = Array(4).fill().map(() => Math.floor(Math.random() * 30000) + 10000);
+                } else if(this.textContent === 'Yearly') {
+                    salesChart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    salesChart.data.datasets[0].data = Array(12).fill().map(() => Math.floor(Math.random() * 80000) + 30000);
+                } else {
+                    salesChart.data.labels = days;
+                    salesChart.data.datasets[0].data = newData;
+                }
+               
+                salesChart.update();
+            });
+        });
+       
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#productsTable tr');
+           
+            rows.forEach(row => {
+                const name = row.cells[1].textContent.toLowerCase();
+                if (name.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+       
+        // Form submission
+        document.getElementById('productForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+           
+            // Get form values
+            const productData = {
+                name: document.getElementById('productName').value,
+                price: parseFloat(document.getElementById('productPrice').value),
+                description: document.getElementById('productDescription').value,
+                details: document.getElementById('productDetails').value,
+                category: document.getElementById('productCategory').value,
+                stock: parseInt(document.getElementById('stockQuantity').value),
+                image: document.getElementById('productImage').value
+            };
+           
+            try {
+                // In a real app, this would be a fetch request to your API
+                // const response = await fetch('/api/products', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(productData)
+                // });
+               
+                // For demo, we'll simulate the response
+                const newProduct = {
+                    id: Date.now(),
+                    ...productData,
+                    status: 'active'
+                };
+               
+                // Add to the products table
+                addProductToTable(newProduct);
+               
+                // Show success message
+                showMessage('Product added successfully!', 'success');
+               
+                // Reset form
+                document.getElementById('productForm').reset();
+               
+                // Add to homepage (simulate)
+                addToHomepage(newProduct);
+               
+            } catch (error) {
+                showMessage('Error adding product: ' + error.message, 'error');
+            }
+        });
+       
+        // Add product to the table
+        function addProductToTable(product) {
+            const tableBody = document.getElementById('productsTable');
+            const statusClass = product.stock > 0 ? 'status-active' : 'status-inactive';
+            const statusText = product.stock > 10 ? 'Active' : product.stock > 0 ? 'Low Stock' : 'Out of Stock';
+           
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src="${product.image || 'https://via.placeholder.com/50'}" class="product-image" alt="${product.name}"></td>
+                <td>${product.name}</td>
+                <td>${product.category}</td>
+                <td>R ${product.price.toFixed(2)}</td>
+                <td>${product.stock}</td>
+                <td><span class="status ${statusClass}">${statusText}</span></td>
+                <td class="action-cell">
+                    <button class="btn btn-sm btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="btn btn-sm btn-delete"><i class="fas fa-trash"></i></button>
+                </td>
+            `;
+           
+            tableBody.appendChild(row);
+        }
+       
+        // Add product to homepage (simulated)
+        function addToHomepage(product) {
+            console.log(`Adding "${product.name}" to homepage...`);
+            // In a real app, this would refresh the homepage or add via API
+        }
+       
+        // Show message
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+           
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+       
+        // Load initial products
+        document.addEventListener('DOMContentLoaded', () => {
+            // These would come from your database
+            const initialProducts = [
+                {
+                    id: 1,
+                    name: 'Crossed Hoodie Black',
+                    category: 'Hoodies',
+                    price: 350,
+                    stock: 15,
+                    image: 'https://via.placeholder.com/50?text=HOOD',
+                    status: 'active'
+                },
+                {
+                    id: 2,
+                    name: 'Crossed Out All Hands Tee',
+                    category: 'T-Shirts',
+                    price: 200,
+                    stock: 24,
+                    image: 'https://via.placeholder.com/50?text=TEE',
+                    status: 'active'
+                }
+            ];
+           
+            initialProducts.forEach(addProductToTable);
+        });
+    </script>
+</body>
+</html>

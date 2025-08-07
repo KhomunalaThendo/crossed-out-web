@@ -3,9 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dash.css">
     <title>Dashboard</title>
 </head>
 <body>
-    Dashboard
+    <header class="dash-header">
+        <div class="crossed-logo">
+            <img src="/assets/images/logo-small.png" width="50" alt="">
+        </div>
+    </header>
+    <main>
+        <div class="drawer-nav">
+            <div class="crossed-logo">
+                <img src="/assets/images/logo-small.png" width="50" alt="">
+            </div>
+            <div class="drawer-items">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="products.html">Products</a>
+                <a href="customers.html">Customers</a>
+                <a href="analytics.html">Analytics</a>
+                <a href=""></a>
+            </div>
+           
+
+        </div>
+        <div class="dash">
+            <section class="statistics">
+            
+                <div class="overall-stats">
+                    <div class="total-sales">
+                        <p class="totalSales">Total Sales:</p>
+                        <p id="totalSales">R 3 500</p>
+                    </div>
+                    <div class="total-users">
+                        <p class="totalUsers">Total Users:</p>
+                        <p id="totalUsers">50</p>
+                    </div>
+                    <div class="total-orders">
+                        <p class="totalOders">Total Orders:</p>
+                        <p id="totalOrders">R 26</p>
+                    </div>
+                </div>
+            </section>
+            <section class="salesPerformance">
+                <h3 class="sales-performance">Sales Performance</h3>
+                <div class="filters">
+                    <button>Weekly</button>
+                    <button>Monthly</button>
+                    <button>Yearly</button>
+                </div>
+                <canvas id="salesGraph">
+        
+                </canvas>
+            </section>
+        
+            <section class="manage-products">
+                <h3 class="mng-prod">Manage Products</h3>
+                <div class="prodSearch">
+                    <input type="search" placeholder="search product">
+                    <button type="submit"></button>
+                </div>
+                <table class="productsTable">
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                    <tr>
+                        <td><img src="/assets/images/6-tee.jpg" alt="" width="40px"></td>
+                        <td>Crossed Out All Hands Tee</td>
+                        <td>t-shirts</td>
+                        <td>R200</td>
+                        <td>10</td>
+                        <td><button>Edit</button></td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </main>
+    
+    
+    <script src="dashscript.js"></script>    
 </body>
 </html>

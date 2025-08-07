@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+    <link rel="stylesheet" href="dash.css">
+
+</head>
+<body>
+    <header class="addprodheader">
+        <img src="/assets/icons/back.svg" alt="">
+        <h3>Add New Product</h3>
+    </header>
+    
+    <div class="addProdContainer">
+        
+
+        <form id="addProductForm">
+            <div class="field-group">
+                <label for="pdName">Product Name</label>
+                <input type="text"  id="pdName" placeholder="Enter product name">
+            </div>
+
+            <div class="field-group">
+                <label for="pDescription">Description</label>
+                <textarea  id="pDescription" placeholder="Enter product description"></textarea>
+            </div>
+            <div class="field-group">
+                <label for="pPrice">Price</label>
+                <input type="text"  id="pPrice" placeholder="Enter product Price">
+            
+            </div>
+            <div class="field-group">
+                <label for="pCategory">Category</label>
+                <select name="" id="pCategory" >
+                    <option value="t-shirt">T-shirt</option>
+                    <option value="hoodie">Hoodie</option>
+                    <option value="bottom">Bottom</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+
+            </div>
+            <div class="field-group">
+                <label for="stockQuantity">Stock Quantity</label>
+                <input type="text" id="stockQuantity" placeholder="Enter stock quantity">
+            </div>
+            <div class="uploadImg">
+                <h5>Uploade Product Image</h5>
+                <input type="file" name="" id="pImage">
+            </div>
+
+            <button id="addProduct">Add Product</button>
+        </form>
+    </div>
+<script src="dashscript.js"></script>
+</body>
+</html>
