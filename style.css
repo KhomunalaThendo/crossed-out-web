@@ -128,10 +128,12 @@ nav a:hover{
     gap: 2vw;
 }
 .banner-text{
-    font-size: 20px;
+    text-stroke: 2px black;
+    font-size: 23px;
     text-align: end;
     font-family: 'caprasimo', serif;
     color: var(--bg-color-light);
+    
 }
 #bannerBtn{
     padding: 10px 5px;
@@ -436,32 +438,14 @@ nav a:hover{
         background-image: url(assets/images/crossedgld.jpg);
         background-size: cover;
         background-position: center;
-        height: 100vh;
+        height: 90vh;
         display: flex;
         justify-content: end;
     }
     #banner-container{
-        width: 60vw;
-        padding: 10px 50px;
-        text-align: right;
+       display: none;
     }
-    .banner-text{
-        font-size: 17px;
-        text-align: end;
-        font-family: 'caprasimo', serif;
-        color: black;
-        text-wrap:var(--bg-color-light) ;
-
-    }
-    #bannerBtn{
-        padding: 10px 5px;
-        border-radius: 10px;
-        border: none;
-        width: 40vw;
-        color: #ffffff;
-        font-family: 'caprasimo', serif;
-
-    }
+    
     .prodSecTitle{
         text-align: center;
         margin-top: 10vh;
